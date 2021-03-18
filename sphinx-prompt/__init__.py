@@ -98,11 +98,13 @@ class PromptDirective(rst.Directive):
                                 ),
                             )
                             statement = []
-                        line = line[len(prompt) :].rstrip()
+
+                        line = line[(len(prompt) +1):].rstrip()
                         prompt_class = cache.get_prompt_class(prompt)
                         break
 
                 statement.append(line)
+
             # Add last prompt
             if len(statement) > 0:
                 html += '<span class="{0!s}">{1!s}</span>\n'.format(
@@ -124,6 +126,7 @@ class PromptDirective(rst.Directive):
                     statement = []
         else:
             for line in self.content:
+
                 html += '<span class="{0!s}">{1!s}</span>\n'.format(
                     cache.get_prompt_class(prompt),
                     highlight(line, Lexer(), HtmlFormatter(nowrap=True)).strip("\r\n"),

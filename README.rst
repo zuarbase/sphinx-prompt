@@ -1,6 +1,18 @@
 Sphinx Prompt
 =============
 
+Zuar fork of ``spinx-prompt``.  The existing repo left a leading blank
+space on all lines with bash commands, meaning they would be omitted
+from history.  This fork contains a fix to eliminate that behavior.
+The fix only works when prompts are specified and the `auto` keyword
+is used.  E.g:
+
+.. code::
+
+    .. prompt:: bash $ auto
+
+       $ cat /dev/null
+
 .. contents:: Table of contents
 
 Initialise
